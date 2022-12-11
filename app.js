@@ -1,16 +1,21 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const mainRoute = require("./routes/mainRoute");
+const userRoute = require("./routes/userRoute");
+const uploadRoute = require("./routes/uploadRoute");
 
 //middlewares
-app.use(bodyParser.json());
+app
+  .use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  )
+  .use(bodyParser.json());
 app.use(express.json());
 
-app.use("/", mainRoute);
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World");
-// });
+//routes
+app.use("/", userRoute);
+app.use("/upload", uploadRoute);
 
 module.exports = app;
