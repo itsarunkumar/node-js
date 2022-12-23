@@ -2,6 +2,8 @@ const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// const uploadControl = require("../utils/uploadFiles");
+
 //creating the jwt token
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.TOKEN_SECRET, {
@@ -10,6 +12,8 @@ const createToken = (id) => {
 };
 
 exports.sample = function (req, res) {
+  // let file = req.body.file;
+  // let server = uploadControl.uploadFile(file);
   res.json({ message: "Hello World" });
 };
 
